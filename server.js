@@ -8,6 +8,11 @@ const app = express();
 const port = 9000;
 // middlewares
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeaders("Access-Control-Allow-Origin", "*"),
+    res.setHeaders("Access-Control-Allow-Headers", "*"),
+    next();
+});
 
 // db config
 const connection_url =
